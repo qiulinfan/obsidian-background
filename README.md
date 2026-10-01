@@ -51,6 +51,10 @@ A path such as `Wallpapers/editor.jpg` is relative to your vault. Use **Choose**
 
 ## Installation
 
+### Community directory
+
+Open the [Background community listing](https://community.obsidian.md/plugins/background), choose **Add to Obsidian**, then enable **Background**.
+
 ### Manual release installation
 
 1. Download `main.js`, `manifest.json` and `styles.css` from [the latest release](https://github.com/qiulinfan/obsidian-background/releases/latest).
@@ -58,7 +62,7 @@ A path such as `Wallpapers/editor.jpg` is relative to your vault. Use **Choose**
 3. Restart Obsidian, then enable **Background** in **Settings → Community plugins**.
 4. Choose your images in **Settings → Background**.
 
-The plugin ID and installation folder are **`background`**. A GitHub release does not mean the plugin has been accepted into the community directory; use the release files until the listing is available.
+The plugin ID and installation folder are **`background`**.
 
 ### Updating from 0.1.0
 

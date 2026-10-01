@@ -51,6 +51,10 @@
 
 ## 安装
 
+### 社区目录
+
+打开 [Background 社区页面](https://community.obsidian.md/plugins/background)，点击 **Add to Obsidian**，然后启用 **Background**。
+
 ### 手动安装 release
 
 1. 从[最新发布](https://github.com/qiulinfan/obsidian-background/releases/latest)下载 `main.js`、`manifest.json` 和 `styles.css`。
@@ -58,7 +62,7 @@
 3. 重启 Obsidian，在 **设置 → 第三方插件** 中启用 **Background**。
 4. 在 **设置 → Background** 中选择图片。
 
-插件 ID 和安装文件夹均为 **`background`**。GitHub 已发布不代表已通过社区目录审核；目录可用前请通过 release 文件安装。
+插件 ID 和安装文件夹均为 **`background`**。
 
 ### 从 0.1.0 更新
 
