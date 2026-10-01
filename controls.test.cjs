@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT-0
+// SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Qiulin Fan
 const { test } = require('node:test');
 const assert = require('node:assert/strict');

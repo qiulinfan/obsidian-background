@@ -5,7 +5,7 @@
   <a href="https://github.com/qiulinfan/obsidian-background/commits/main"><img src="https://img.shields.io/github/last-commit/qiulinfan/obsidian-background/main?style=flat-square&color=6c5ce7" alt="Last commit"></a>
   <a href="https://github.com/qiulinfan/obsidian-background/stargazers"><img src="https://img.shields.io/github/stars/qiulinfan/obsidian-background?style=flat-square&color=6c5ce7" alt="GitHub stars"></a>
   <a href="https://github.com/qiulinfan/obsidian-background/releases/latest"><img src="https://img.shields.io/github/v/release/qiulinfan/obsidian-background?style=flat-square&color=00b894" alt="Latest release"></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT--0-636e72?style=flat-square" alt="MIT No Attribution license"></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-636e72?style=flat-square" alt="MIT license"></a>
 </p>
 <p align="center"><b>English</b> | <a href="./README_zh-CN.md">简体中文</a></p>
 
@@ -107,4 +107,4 @@ The release workflow checks source syntax, behaviour tests and metadata, require
 
 ## License
 
-[MIT No Attribution (MIT-0)](./LICENSE), copyright **2026 Qiulin Fan**, covers this project's source, documentation and original demo SVG artwork. You can use, modify, distribute and sell it without an attribution requirement. Obsidian and any separately installed software retain their own licenses.
+[MIT](./LICENSE), copyright **2026 Qiulin Fan**, covers this project's source, documentation and original demo SVG artwork. You can use, modify, distribute and sell it while retaining the copyright and permission notices. Obsidian and any separately installed software retain their own licenses.

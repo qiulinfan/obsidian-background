@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT-0
+// SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Qiulin Fan
 import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
@@ -16,9 +16,10 @@ assert.equal(manifest.name, 'Background');
 assert.equal(manifest.isDesktopOnly, true);
 assert.equal(pkg.version, manifest.version, 'package and manifest versions must agree');
 assert.equal(versions[manifest.version], manifest.minAppVersion, 'versions.json must describe this release');
-assert.equal(pkg.license, 'MIT-0');
+assert.equal(pkg.license, 'MIT');
 const license = await readFile(path.join(root, 'LICENSE'), 'utf8');
-assert.ok(license.includes('MIT No Attribution') && license.includes('2026 Qiulin Fan'));
+assert.ok(license.startsWith('MIT License\n') && license.includes('2026 Qiulin Fan'));
+for (const asset of ['main.js', 'styles.css']) assert.ok((await readFile(path.join(root, asset), 'utf8')).includes(license.trim()), `${asset} must retain the full MIT license`);
 if (process.env.RELEASE_TAG !== undefined) {
   assert.equal(process.env.RELEASE_TAG, manifest.version, 'tag must exactly equal manifest.version, without a v prefix');
 }
@@ -26,4 +27,4 @@ for (const name of ['main.js', 'manifest.json', 'styles.css', 'README.md', 'READ
   const file = await stat(path.join(root, name));
   assert.ok(file.isFile() && file.size > 0, `${name} must be a nonempty file`);
 }
-console.log(`Release metadata checked: ${manifest.id} ${manifest.version} (Obsidian ${manifest.minAppVersion}+, MIT-0)`);
+console.log(`Release metadata checked: ${manifest.id} ${manifest.version} (Obsidian ${manifest.minAppVersion}+, MIT)`);

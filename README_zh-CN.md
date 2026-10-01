@@ -5,7 +5,7 @@
   <a href="https://github.com/qiulinfan/obsidian-background/commits/main"><img src="https://img.shields.io/github/last-commit/qiulinfan/obsidian-background/main?style=flat-square&color=6c5ce7" alt="最近提交"></a>
   <a href="https://github.com/qiulinfan/obsidian-background/stargazers"><img src="https://img.shields.io/github/stars/qiulinfan/obsidian-background?style=flat-square&color=6c5ce7" alt="GitHub 星标"></a>
   <a href="https://github.com/qiulinfan/obsidian-background/releases/latest"><img src="https://img.shields.io/github/v/release/qiulinfan/obsidian-background?style=flat-square&color=00b894" alt="最新发布"></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT--0-636e72?style=flat-square" alt="MIT No Attribution 许可"></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-636e72?style=flat-square" alt="MIT 许可"></a>
 </p>
 <p align="center"><a href="./README.md">English</a> | <b>简体中文</b></p>
 
@@ -107,4 +107,4 @@ npm run check
 
 ## 许可
 
-源码、文档及原创演示 SVG 使用 [MIT No Attribution（MIT-0）](./LICENSE)，版权归 **2026 Qiulin Fan**。允许使用、修改、分发和销售，无须署名；Obsidian 和其他独立安装的软件保留各自许可。
+源码、文档及原创演示 SVG 使用 [MIT](./LICENSE)，版权归 **2026 Qiulin Fan**。允许使用、修改、分发和销售，须保留版权与许可声明；Obsidian 和其他独立安装的软件保留各自许可。
