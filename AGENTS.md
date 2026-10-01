@@ -7,6 +7,16 @@
 - Keep text, controls, PDF pages and cropped paper opaque. Image layers alone
   change opacity, use pointer-events none and respect native theme colours.
 - Per-tab choices use leaf IDs; region defaults preserve other tab overrides.
+  Keep legacy numeric `tabs` opacity values; `tabImages` adds independent image
+  paths. An absent image override inherits the region, while an empty string
+  explicitly removes the background. Reset clears both overrides for one tab.
+- The `background-controls` ItemView opens in the right sidebar, reuses its
+  existing leaf and remembers the last selected non-control tab. Do not paint
+  the controls view or retarget it when the sidebar gains focus. Update control
+  values without rebuilding its DOM on every opacity or layout change.
+- Renames update exact configured image paths. Resource resolution is limited
+  to configured vault images, deduplicated by path, and guarded against stale
+  async results. A chooser finishing after its target closes changes nothing.
   Resize/layout changes retain one continuous right-dock framing across panes.
 - Popovers use their own responsive grid, measured placement and local key
   handling. Never bind global editor keys or add modal dimming.

@@ -18,13 +18,20 @@
 
 Screenshots were captured in **Obsidian Desktop 1.13.7**. Every note and console line shown is simulated; the four SVG wallpapers are original procedural artwork. The demo uses stronger backgrounds than the initial defaults to make the effect visible. See [the demo vault and artwork provenance](./docs/demo-vault/ARTWORK.md).
 
+## Background sidebar
+
+![The Background sidebar in Obsidian 1.13.7](./docs/screenshots/sidebar.png)
+
+Choose a target tab, preview its local image, and adjust it from one panel. This screenshot uses simulated notes and the original SVG demo artwork.
+
 ## Features
 
 | Feature | What it does |
 | --- | --- |
 | Local image picker | Choose PNG, JPEG, WebP, GIF or SVG files inside your vault; no separate CSS snippet is needed. |
 | Live tab control | Drag a tab's slider for an immediate preview. Changes are saved automatically. |
-| Independent tabs | Set one tab's strength without changing other individually adjusted tabs. |
+| Background sidebar | Open a dedicated right-side control panel that follows the selected tab, with an image preview, picker and strength slider. |
+| Independent tabs | Choose a different image and strength for each tab, without changing other tabs. |
 | Region defaults | Apply a default to new tabs and tabs without an individual choice. |
 | Continuous right sidebar | Preserve one image's framing across right-sidebar split panes. |
 | Opaque content | Change only the wallpaper layer's opacity. Text, controls and PDF paper retain their own opacity. |
@@ -35,8 +42,10 @@ Screenshots were captured in **Obsidian Desktop 1.13.7**. Every note and console
 ## Quick Start
 
 1. [Install the latest GitHub release](#installation) in Obsidian Desktop **1.13.7 or newer**.
-2. Open **Settings → Background** and choose an image for each area you want to decorate.
-3. Click the small slider icon in a tab header and adjust the strength while looking at the page.
+2. Click the **Background** image icon in the ribbon, or run **Background: Open background sidebar**.
+3. Select a tab, choose a local image and adjust its strength in the sidebar. The tab-header slider remains available for quick adjustments.
+
+Use **Settings → Background** to choose region defaults for tabs without an individual image. In the sidebar, **No background** hides the image for one tab, while **Use default image** returns that tab to its region's image. Focusing the controls does not change the selected target.
 
 A path such as `Wallpapers/editor.jpg` is relative to your vault. Use **Choose** to select a file or **Clear** to restore the native surface in an area.
 
@@ -59,7 +68,7 @@ The published 0.1.0 tag and assets are preserved.
 
 ## Adjust the look
 
-**Reset tab** removes the selected tab's override. **Set region default** applies its current value to new tabs and tabs without their own choice; other individually adjusted tabs keep their settings. The command palette also offers **Background: Adjust current tab background strength**.
+**Reset tab** removes the selected tab's image and strength overrides. **Set region default** adopts its current image and strength for new tabs and tabs without their own choices; other individually adjusted tabs keep their settings. The command palette also offers **Background: Adjust current tab background strength**.
 
 The initial defaults are subtle:
 
@@ -70,13 +79,13 @@ The initial defaults are subtle:
 | Right sidebar | 4% |
 | Terminal | 6% |
 
-Tab choices follow that tab's leaf ID across layout saves and restarts. Closing a tab removes its override. Use a region default for the strength you want on future tabs.
+Tab choices follow that tab's leaf ID across layout saves and restarts. Closing a tab removes its overrides. Use a region default for the image and strength you want on future tabs.
 
-Background works on native workspace surfaces and CodeMirror editors. A third-party view with its own opaque canvas or a theme's surface rules can cover a wallpaper. PDF pages and other paper surfaces keep their original colours. Terminal applications and other view plugins are optional; Background does not install them. After moving or renaming a selected image, select its new path in settings.
+Background works on native workspace surfaces and CodeMirror editors. A third-party view with its own opaque canvas or a theme's surface rules can cover a wallpaper. PDF pages and other paper surfaces keep their original colours. Terminal applications and other view plugins are optional; Background does not install them. Renaming or moving a selected image inside Obsidian updates its configured paths.
 
 ## Privacy and local data
 
-Background loads only the images you select through Obsidian's vault adapter. It stores vault-relative image paths, region defaults and tab strengths in its own local `data.json`. It does not read note bodies, terminal history or API settings, access files outside the vault, send network requests, collect telemetry, download wallpapers or install dependencies. No account, API key or payment is required.
+Background loads only the images you select through Obsidian's vault adapter. It stores vault-relative image paths, region defaults and per-tab image/strength overrides in its own local `data.json`. It does not read note bodies, terminal history or API settings, access files outside the vault, send network requests, collect telemetry, download wallpapers or install dependencies. No account, API key or payment is required.
 
 The demo directory contains simulated notes and original artwork, with no personal vault configuration. You can copy [docs/demo-vault](./docs/demo-vault) to a fresh folder, open it as a vault and select the images in `Wallpapers/`.
 

@@ -74,6 +74,19 @@
 .obg-opacity-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5em; min-inline-size: 0; }
 .obg-opacity-actions button { flex: 1 1 auto; min-inline-size: 0; padding: .4em .65em; height: auto; line-height: 1.4; white-space: normal; font-size: var(--font-ui-small); }
 
+.obg-controls { overflow: auto; padding: 16px; background-color: var(--background-primary); }
+.obg-controls h3 { margin: 0 0 16px; }
+.obg-controls .setting-item { flex-wrap: wrap; gap: 8px; }
+.obg-controls .setting-item-info { min-width: 0; }
+.obg-controls .setting-item-control { flex-wrap: wrap; min-width: 0; gap: 8px; }
+.obg-controls select { max-width: 100%; }
+.obg-controls button { height: auto; white-space: normal; }
+.obg-controls input[type="range"] { min-width: 100px; max-width: 100%; }
+.obg-image-preview { display: block; width: 100%; max-height: 180px; object-fit: contain; border-radius: 8px; background: var(--background-secondary); margin-bottom: 8px; }
+.obg-image-preview[hidden] { display: none; }
+.obg-image-path { overflow-wrap: anywhere; font-size: var(--font-ui-small); margin-bottom: 6px; }
+.obg-controls .obg-opacity-hint { margin-bottom: 10px; }
+
 /* Generic tabs reuse the existing images. Opaque paper and content stay intact. */
 .obg-main > .view-content,
 .obg-left {

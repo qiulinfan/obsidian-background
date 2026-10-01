@@ -1,6 +1,6 @@
 {
   "name": "obsidian-background",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "description": "Local wallpapers and per-tab opacity controls for Obsidian",
   "scripts": {

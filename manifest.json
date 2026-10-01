@@ -1,9 +1,9 @@
 {
   "id": "background",
   "name": "Background",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "minAppVersion": "1.13.7",
-  "description": "Local wallpapers and live per-tab opacity controls for your workspace.",
+  "description": "Choose local wallpapers for each tab and adjust them from a dedicated background sidebar.",
   "author": "Qiulin Fan",
   "authorUrl": "https://github.com/qiulinfan",
   "isDesktopOnly": true
