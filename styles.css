@@ -1,0 +1,134 @@
+.obg-opacity-button {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 24px;
+  min-width: 0;
+  padding: 3px;
+  margin: 0 2px;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  color: var(--text-muted);
+  opacity: 0;
+}
+.obg-opacity-button .svg-icon { width: 14px; height: 14px; }
+.workspace-tab-header:hover .obg-opacity-button,
+.workspace-tab-header.is-active .obg-opacity-button,
+.obg-opacity-button:focus-visible { opacity: 1; }
+.obg-opacity-button:hover { color: var(--interactive-accent); }
+.obg-opacity-popover {
+  position: fixed;
+  z-index: var(--layer-modal);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: .65em;
+  box-sizing: border-box;
+  inline-size: min(30rem, calc(100vw - 2em), max(20rem, var(--obg-pane-width, 20rem)));
+  max-block-size: calc(100vh - 2em);
+  overflow: auto;
+  padding: .9em;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 10px;
+  background: var(--background-primary);
+  box-shadow: var(--shadow-s);
+}
+.obg-opacity-title { display: flex; align-items: center; justify-content: space-between; gap: .5em; min-inline-size: 0; font-weight: var(--font-semibold); line-height: 1.4; }
+.obg-opacity-title span { min-inline-size: 0; overflow-wrap: break-word; }
+.obg-opacity-title button { flex: 0 0 auto; inline-size: 1.6em; block-size: 1.6em; min-inline-size: 0; padding: .2em; border: none; box-shadow: none; background: transparent; }
+.obg-opacity-slider-row { display: flex; align-items: center; gap: .7em; min-inline-size: 0; }
+.obg-opacity-slider-row .slider-value { order: 1; flex: 0 0 auto; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.obg-opacity-slider-row input[type="range"] {
+  order: 0;
+  flex: 1 1 auto;
+  inline-size: 100%;
+  min-inline-size: 0;
+  block-size: 1.5em;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.obg-opacity-slider-row input[type="range"]::-webkit-slider-runnable-track {
+  block-size: .2em;
+  border-radius: 1em;
+  background: linear-gradient(to right, var(--interactive-accent) calc(var(--slider-fill-ratio, 0) * 100%), var(--background-modifier-border) calc(var(--slider-fill-ratio, 0) * 100%));
+}
+.obg-opacity-slider-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  inline-size: .8em;
+  block-size: .8em;
+  margin-block-start: -.3em;
+  border: none;
+  border-radius: 50%;
+  background: var(--interactive-accent);
+  box-shadow: none;
+  cursor: ew-resize;
+}
+.obg-opacity-slider-row input[type="range"]:focus-visible { outline: 1px solid var(--interactive-accent); outline-offset: .15em; border-radius: .2em; }
+.obg-opacity-hint { min-inline-size: 0; font-size: var(--font-ui-smaller); color: var(--text-muted); line-height: 1.5; }
+.obg-opacity-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5em; min-inline-size: 0; }
+.obg-opacity-actions button { flex: 1 1 auto; min-inline-size: 0; padding: .4em .65em; height: auto; line-height: 1.4; white-space: normal; font-size: var(--font-ui-small); }
+
+/* Generic tabs reuse the existing images. Opaque paper and content stay intact. */
+.obg-main > .view-content,
+.obg-left {
+  position: relative;
+  isolation: isolate;
+}
+.obg-main > .view-content::before,
+.obg-left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  opacity: var(--obg-tab-opacity);
+}
+.obg-main > .view-content::before { background-image: var(--obg-image); }
+.obg-left::before { background-image: var(--obg-image); }
+.obg-main .cm-editor, .obg-main .cm-scroller, .obg-main .cm-gutters,
+.obg-left .view-content, .obg-left .search-result-container, .obg-left .bookmark-container { background-color: transparent; }
+
+/* Each pane crops the same dock-sized image, preserving its continuous framing.
+   Native pane fill prevents the outer dock image from adding a second opacity. */
+.workspace-split.mod-right-split .workspace-leaf-content.obg-right {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--background-secondary);
+}
+.obg-right::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: var(--obg-width, 100%);
+  height: var(--obg-height, 100%);
+  left: var(--obg-left, 0px);
+  top: var(--obg-top, 0px);
+  clip-path: var(--obg-clip, inset(0));
+  background: var(--obg-image) center / cover no-repeat;
+  opacity: var(--obg-tab-opacity);
+}
+
+.obg-main .markdown-source-view, .obg-main .markdown-reading-view,
+.obg-main .markdown-preview-view, .obg-main .xterm, .obg-main .xterm-viewport {
+  background-color: transparent;
+}
+.obg-main[data-obg-region="terminal"] [class~="terminal:terminal"] { background-color: transparent; }
+.obg-dock { position: relative; isolation: isolate; background-color: var(--background-secondary); }
+.obg-dock::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: var(--obg-right-image) center / cover no-repeat; opacity: var(--obg-right-opacity);
+}
+.obg-dock .workspace-tabs, .obg-dock .workspace-tab-container,
+.obg-dock .workspace-tab-header-container, .obg-dock .workspace-leaf,
+.obg-dock .workspace-leaf-content, .obg-dock .view-content,
+.obg-right .yolo-sidebar-root, .obg-right .yolo-sidebar-panels,
+.obg-right .yolo-sidebar-pane, .obg-right .yolo-chat-container,
+.obg-right .yolo-chat-conversation-surface { background-color: transparent; }
+.obg-dock .workspace-leaf-content.obg-right { background-color: var(--background-secondary); }
