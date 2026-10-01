@@ -1,7 +1,7 @@
 {
-  "id": "obsidian-background",
+  "id": "background",
   "name": "Background",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "minAppVersion": "1.13.7",
   "description": "Local wallpapers and live per-tab opacity controls for your workspace.",
   "author": "Qiulin Fan",

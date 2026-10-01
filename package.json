@@ -1,11 +1,11 @@
 {
   "name": "obsidian-background",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Local wallpapers and per-tab opacity controls for Obsidian",
   "scripts": {
     "test": "node --test *.test.cjs",
-    "check": "node --check main.js && node --test *.test.cjs"
+    "check": "node --check main.js && node --test *.test.cjs && node scripts/check-release.mjs"
   },
-  "license": "Apache-2.0"
+  "license": "MIT-0"
 }

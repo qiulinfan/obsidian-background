@@ -3,4 +3,5 @@ node_modules/
 .env*
 *.local.json
 .obsidian/
+data.json
 docs/demo-vault/.obsidian/

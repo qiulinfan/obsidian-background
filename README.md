@@ -1,71 +1,97 @@
-# Obsidian Background
+<h1 align="center">Background</h1>
+<p align="center">Local wallpapers and live per-tab controls for a quieter Obsidian workspace.</p>
 
-Local wallpapers for a quiet workspace, with a live opacity slider on every tab.
+<p align="center">
+  <a href="https://github.com/qiulinfan/obsidian-background/commits/main"><img src="https://img.shields.io/github/last-commit/qiulinfan/obsidian-background/main?style=flat-square&color=6c5ce7" alt="Last commit"></a>
+  <a href="https://github.com/qiulinfan/obsidian-background/stargazers"><img src="https://img.shields.io/github/stars/qiulinfan/obsidian-background?style=flat-square&color=6c5ce7" alt="GitHub stars"></a>
+  <a href="https://github.com/qiulinfan/obsidian-background/releases/latest"><img src="https://img.shields.io/github/v/release/qiulinfan/obsidian-background?style=flat-square&color=00b894" alt="Latest release"></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT--0-636e72?style=flat-square" alt="MIT No Attribution license"></a>
+</p>
+<p align="center"><b>English</b> | <a href="./README_zh-CN.md">简体中文</a></p>
 
-![Backgrounds in a simulated Obsidian workspace](docs/screenshots/workspace.png)
+## Highlights
+
+| A wallpaper for each part of your workspace | Adjust it while looking at the page |
+|:--:|:--:|
+| ![Original wallpapers in a simulated workspace](./docs/screenshots/workspace.png) | ![The live per-tab opacity control](./docs/screenshots/controls.png) |
+| Choose separate local images for the editor, left sidebar, right sidebar and terminal panels. | Click a tab's slider icon, then change the image strength from 0–100%. Text and controls stay opaque. |
+
+Screenshots were captured in **Obsidian Desktop 1.13.7**. Every note and console line shown is simulated; the four SVG wallpapers are original procedural artwork. The demo uses stronger backgrounds than the initial defaults to make the effect visible. See [the demo vault and artwork provenance](./docs/demo-vault/ARTWORK.md).
 
 ## Features
 
-- Choose separate images for the editor, left sidebar, right sidebar, and terminal panels.
-- Click a tab's slider icon to adjust its background from 0–100%, with an immediate preview.
-- Keep a choice for one tab, or make it the default for that area.
-- Keep text, controls, formulas, and PDF paper at full opacity.
-- Preserve one continuous right-sidebar image across split panes.
-- Use a responsive popover with a thin slider, a small circular handle, and automatic edge positioning.
-- English and Simplified Chinese controls; no runtime dependencies beyond Obsidian.
+| Feature | What it does |
+| --- | --- |
+| Local image picker | Choose PNG, JPEG, WebP, GIF or SVG files inside your vault; no separate CSS snippet is needed. |
+| Live tab control | Drag a tab's slider for an immediate preview. Changes are saved automatically. |
+| Independent tabs | Set one tab's strength without changing other individually adjusted tabs. |
+| Region defaults | Apply a default to new tabs and tabs without an individual choice. |
+| Continuous right sidebar | Preserve one image's framing across right-sidebar split panes. |
+| Opaque content | Change only the wallpaper layer's opacity. Text, controls and PDF paper retain their own opacity. |
+| Theme-aware controls | Use Obsidian's native colours and a responsive popover that positions near the tab. |
+| English and Chinese | The controls follow Obsidian's language setting; the command name is currently English. |
+| Small runtime | Uses Obsidian's APIs, with no bundled framework or runtime dependencies. Desktop only. |
 
-![Live per-tab opacity controls](docs/screenshots/controls.png)
+## Quick Start
 
-These screenshots were captured in Obsidian Desktop 1.13.7. All notes and console content are simulated. The wallpapers are original procedural SVG artwork. The demo uses slightly stronger backgrounds to make the effect visible in screenshots.
+1. [Install the latest GitHub release](#installation) in Obsidian Desktop **1.13.7 or newer**.
+2. Open **Settings → Background** and choose an image for each area you want to decorate.
+3. Click the small slider icon in a tab header and adjust the strength while looking at the page.
 
-## Install
+A path such as `Wallpapers/editor.jpg` is relative to your vault. Use **Choose** to select a file or **Clear** to restore the native surface in an area.
 
-Requires **Obsidian Desktop 1.13.7 or newer**.
+## Installation
 
-1. Download `main.js`, `manifest.json`, and `styles.css` from the [latest release](https://github.com/qiulinfan/obsidian-background/releases/latest).
-2. Put them in your vault's `.obsidian/plugins/obsidian-background/` folder.
-3. Enable **Background** in Settings → Community plugins.
-4. Open Settings → Background and choose your images.
+### Manual release installation
 
-Each image is a file inside your vault. PNG, JPEG, WebP, GIF, and SVG are supported. You can use the file picker or enter a vault-relative path such as `Wallpapers/editor.jpg`.
+1. Download `main.js`, `manifest.json` and `styles.css` from [the latest release](https://github.com/qiulinfan/obsidian-background/releases/latest).
+2. Create `<vault>/.obsidian/plugins/background/` and copy the three files there.
+3. Restart Obsidian, then enable **Background** in **Settings → Community plugins**.
+4. Choose your images in **Settings → Background**.
+
+The plugin ID and installation folder are **`background`**. A GitHub release does not mean the plugin has been accepted into the community directory; use the release files until the listing is available.
+
+### Updating from 0.1.0
+
+Version 0.1.0 used the ID `obsidian-background`. Disable that copy and back up its folder before installing 0.1.1 or later in `background/`. To retain your image paths and strengths, copy the old folder's `data.json` into the new folder **locally, before enabling it**. Keep only one copy enabled. The plugin does not move folders or edit your configuration automatically. Do not upload `data.json` when reporting an issue.
+
+The published 0.1.0 tag and assets are preserved.
 
 ## Adjust the look
 
-Click the small slider icon in a tab header. Drag the slider while looking at the page; the choice is saved automatically in that vault.
+**Reset tab** removes the selected tab's override. **Set region default** applies its current value to new tabs and tabs without their own choice; other individually adjusted tabs keep their settings. The command palette also offers **Background: Adjust current tab background strength**.
 
-**Reset tab** returns that tab to its area default. **Set region default** applies the current value to new tabs and tabs without their own choice; other individually adjusted tabs keep their settings. The command palette also includes **Background: Adjust current tab background strength**.
+The initial defaults are subtle:
 
-The initial strengths are deliberately subtle:
-
-| Area | Default |
+| Area | Strength |
 | --- | ---: |
 | Editor, including source and live editing views | 5% |
 | Left sidebar | 6% |
 | Right sidebar | 4% |
 | Terminal | 6% |
 
-Tab choices follow the open tab across layout saves and restarts. Closing a tab removes that tab's override. Use an area default when you want the same strength on future tabs.
+Tab choices follow that tab's leaf ID across layout saves and restarts. Closing a tab removes its override. Use a region default for the strength you want on future tabs.
 
-## Demo
+Background works on native workspace surfaces and CodeMirror editors. A third-party view with its own opaque canvas or a theme's surface rules can cover a wallpaper. PDF pages and other paper surfaces keep their original colours. Terminal applications and other view plugins are optional; Background does not install them. After moving or renaming a selected image, select its new path in settings.
 
-[docs/demo-vault](docs/demo-vault) contains the simulated notes and four original wallpapers used above. Copy it to a new folder, open that folder as a vault, install Background, and choose the files in `Wallpapers/`.
+## Privacy and local data
 
-Background works on the native workspace surfaces and CodeMirror editors. A third-party view that draws its own opaque canvas can cover a background. Images of PDF pages and other paper surfaces keep their original colours.
+Background loads only the images you select through Obsidian's vault adapter. It stores vault-relative image paths, region defaults and tab strengths in its own local `data.json`. It does not read note bodies, terminal history or API settings, access files outside the vault, send network requests, collect telemetry, download wallpapers or install dependencies. No account, API key or payment is required.
 
-## Local data
+The demo directory contains simulated notes and original artwork, with no personal vault configuration. You can copy [docs/demo-vault](./docs/demo-vault) to a fresh folder, open it as a vault and select the images in `Wallpapers/`.
 
-The plugin stores image paths, area defaults, and per-tab strengths in its own `data.json`. It loads local image files through Obsidian's vault adapter. It does not inspect note bodies or terminal history, download wallpapers, or need an API key.
+## Feedback and development
 
-## Development
+[Report a bug or suggest a feature](https://github.com/qiulinfan/obsidian-background/issues). Include your Obsidian version, OS, plugin version, theme and a short reproduction. Use a clean demo vault for screenshots and omit personal configuration.
 
-`main.js` is the source and release artifact. No build step or dependency installation is needed:
+`main.js` is both the authored source and release artifact. Node.js is needed only for development checks; no build step or dependency installation is required:
 
 ```sh
 npm run check
 ```
 
-Copy the three plugin files into a test vault and reload the plugin to try a change. Release tags match `manifest.json`'s version.
+The release workflow checks source syntax, behaviour tests and metadata, requires a tag exactly matching `manifest.json`'s version (without `v`), then attaches only the three plugin files. Existing releases are not overwritten.
 
 ## License
 
-[Apache-2.0](LICENSE), including the original demo SVG artwork.
+[MIT No Attribution (MIT-0)](./LICENSE), copyright **2026 Qiulin Fan**, covers this project's source, documentation and original demo SVG artwork. You can use, modify, distribute and sell it without an attribution requirement. Obsidian and any separately installed software retain their own licenses.

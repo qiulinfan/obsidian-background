@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '[0-9]*.[0-9]*.[0-9]*'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: '24'
+      - name: Check source, tests and exact release version
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: npm run check
+      - name: Publish the three plugin files
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          # main.js is the authored source. No bundler or dependency install is needed.
+          # Existing releases are never replaced; gh release create fails if the tag already has one.
+          notes="docs/releases/$RELEASE_TAG.md"
+          if [ -f "$notes" ]; then
+            gh release create "$RELEASE_TAG" main.js manifest.json styles.css --verify-tag --title "Background $RELEASE_TAG" --notes-file "$notes"
+          else
+            gh release create "$RELEASE_TAG" main.js manifest.json styles.css --verify-tag --title "Background $RELEASE_TAG" --generate-notes
+          fi

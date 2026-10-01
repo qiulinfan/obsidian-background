@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT-0
+// Copyright (c) 2026 Qiulin Fan
 "use strict";
 const { Plugin, PluginSettingTab, SuggestModal, Setting, SliderComponent, setIcon, setTooltip, getLanguage } = require("obsidian");
 
